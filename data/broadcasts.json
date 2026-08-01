@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-02T00:18:13+09:00",
+  "updated_at": "2026-08-02T00:23:24+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -15,7 +15,14 @@
         "number": 6,
         "style_id": 10006,
         "label": "女声6 / ノーマル",
-        "processing": "fm-narrowband-v1"
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "FMしおまち",
+          "湾岸北部",
+          "潮待市"
+        ]
       }
     },
     {
@@ -31,7 +38,14 @@
         "number": 6,
         "style_id": 10006,
         "label": "女声6 / ノーマル",
-        "processing": "fm-narrowband-v1"
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待市役所前",
+          "片側一車線",
+          "北通り"
+        ]
       }
     }
   ],
