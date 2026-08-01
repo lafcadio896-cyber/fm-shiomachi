@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: "音声を生成する日付（YYYY-MM-DD、未指定なら日本時間の今日）"
+        description: "音声を生成する日付（YYYY-MM-DD、未指定なら未生成分をすべて補完）"
         required: false
         type: string
 
@@ -24,6 +24,8 @@ concurrency:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -33,54 +35,107 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Resolve target date
-        id: target
-        shell: bash
-        run: |
-          requested="${{ inputs.date }}"
-          if [ -n "$requested" ]; then
-            target_date="$requested"
-          else
-            target_date="$(TZ=Asia/Tokyo date +%F)"
-          fi
-          echo "date=$target_date" >> "$GITHUB_OUTPUT"
-          echo "Target date: $target_date"
-
       - name: Generate today's broadcast
         run: python scripts/generate_broadcast.py
 
+      - name: Resolve audio target dates
+        id: targets
+        shell: bash
+        env:
+          REQUESTED_DATE: ${{ inputs.date }}
+        run: |
+          if [ -n "$REQUESTED_DATE" ]; then
+            dates="$REQUESTED_DATE"
+          else
+            dates="$(python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path.cwd()
+          data = json.loads((root / "data" / "broadcasts.json").read_text(encoding="utf-8"))
+          missing = []
+          for item in data.get("broadcasts", []):
+              date = item.get("date")
+              audio = item.get("audio")
+              if not date:
+                  continue
+              if not audio or not (root / audio).is_file():
+                  missing.append(date)
+          print(" ".join(missing))
+          PY
+            )"
+          fi
+
+          echo "dates=$dates" >> "$GITHUB_OUTPUT"
+          if [ -n "$dates" ]; then
+            echo "Audio target dates: $dates"
+          else
+            echo "No audio generation is required."
+          fi
+
       - name: Install FFmpeg
+        if: steps.targets.outputs.dates != ''
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
 
       - name: Start VOICEVOX Nemo Engine
+        if: steps.targets.outputs.dates != ''
+        shell: bash
         run: |
-          docker run -d --rm \
+          docker run -d \
             --name voicevox-nemo \
+            -e VV_CPU_NUM_THREADS=2 \
+            -e VV_OUTPUT_LOG_UTF8=1 \
+            -e VV_DISABLE_MUTABLE_API=1 \
             -p 127.0.0.1:50021:50021 \
-            voicevox/voicevox_nemo_engine:cpu-latest
+            voicevox/voicevox_nemo_engine:cpu-ubuntu22.04-0.23.0
 
           ready=false
-          for attempt in {1..90}; do
-            if curl -fsS http://127.0.0.1:50021/speakers > /dev/null; then
+          for attempt in {1..360}; do
+            if curl -fsS --max-time 5 http://127.0.0.1:50021/version > /dev/null; then
               ready=true
+              echo "VOICEVOX Nemo Engine became ready after $((attempt * 2)) seconds."
               break
+            fi
+
+            running="$(docker inspect --format='{{.State.Running}}' voicevox-nemo 2>/dev/null || echo false)"
+            if [ "$running" != "true" ]; then
+              echo "VOICEVOX Nemo Engine exited before becoming ready."
+              docker inspect voicevox-nemo || true
+              docker logs voicevox-nemo || true
+              exit 1
+            fi
+
+            if (( attempt % 30 == 0 )); then
+              echo "Still waiting for VOICEVOX Nemo Engine ($((attempt * 2)) seconds)..."
+              docker logs --tail 20 voicevox-nemo || true
             fi
             sleep 2
           done
 
           if [ "$ready" != "true" ]; then
+            echo "VOICEVOX Nemo Engine did not become ready within 12 minutes."
+            docker inspect voicevox-nemo || true
             docker logs voicevox-nemo || true
-            echo "VOICEVOX Nemo Engine did not become ready."
             exit 1
           fi
 
+          curl -fsS http://127.0.0.1:50021/speakers > /dev/null
+
       - name: Generate processed broadcast audio
+        if: steps.targets.outputs.dates != ''
+        shell: bash
         run: |
-          python scripts/generate_audio.py \
-            --date "${{ steps.target.outputs.date }}" \
-            --voice-number 6
+          for target_date in ${{ steps.targets.outputs.dates }}; do
+            python scripts/generate_audio.py \
+              --date "$target_date" \
+              --voice-number 6
+          done
+
+      - name: Stop VOICEVOX Nemo Engine
+        if: always() && steps.targets.outputs.dates != ''
+        run: docker rm -f voicevox-nemo 2>/dev/null || true
 
       - name: Commit generated record and audio
         run: |
@@ -92,5 +147,5 @@ jobs:
           git config user.name "fm-shiomachi-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/broadcasts.json canon/state.json audio
-          git commit -m "本日の放送音声を追加"
+          git commit -m "本日の放送記録と音声を追加"
           git push
