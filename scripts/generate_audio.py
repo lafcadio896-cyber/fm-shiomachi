@@ -16,6 +16,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 BROADCASTS_PATH = ROOT / "data" / "broadcasts.json"
+PRONUNCIATIONS_PATH = ROOT / "data" / "pronunciations.json"
 AUDIO_DIR = ROOT / "audio"
 JST = ZoneInfo("Asia/Tokyo")
 DEFAULT_ENGINE_URL = "http://127.0.0.1:50021"
@@ -92,19 +93,59 @@ def choose_nemo_voice(engine_url: str, voice_number: int) -> tuple[int, str]:
     return voices[voice_number - 1]
 
 
+def load_pronunciations(broadcast: dict) -> dict[str, str]:
+    replacements: dict[str, str] = {}
+
+    if PRONUNCIATIONS_PATH.exists():
+        data = load_json(PRONUNCIATIONS_PATH)
+        global_replacements = data.get("replacements", {})
+        if isinstance(global_replacements, dict):
+            replacements.update(
+                {
+                    str(source): str(reading)
+                    for source, reading in global_replacements.items()
+                    if source and reading
+                }
+            )
+
+    local_replacements = broadcast.get("pronunciations", {})
+    if isinstance(local_replacements, dict):
+        replacements.update(
+            {
+                str(source): str(reading)
+                for source, reading in local_replacements.items()
+                if source and reading
+            }
+        )
+
+    return replacements
+
+
+def apply_pronunciations(text: str, replacements: dict[str, str]) -> tuple[str, list[str]]:
+    applied: list[str] = []
+    # Replace longer expressions first so a place name such as 潮待市役所 is not
+    # partially consumed by the shorter 潮待 replacement.
+    for source in sorted(replacements, key=len, reverse=True):
+        if source not in text:
+            continue
+        text = text.replace(source, replacements[source])
+        applied.append(source)
+    return text, applied
+
+
 def create_query(engine_url: str, text: str, style_id: int) -> dict:
     params = urllib.parse.urlencode({"text": text, "speaker": style_id})
     query = request_json(f"{engine_url}/audio_query?{params}", data=b"", method="POST")
     if not isinstance(query, dict):
         raise RuntimeError("VOICEVOX /audio_query returned an unexpected response")
 
-    # Deliberately flat and restrained: local automated-announcement voice.
-    query["speedScale"] = 0.94
-    query["pitchScale"] = -0.025
-    query["intonationScale"] = 0.22
+    # Calm automated-announcement voice, but not completely flat.
+    query["speedScale"] = 0.95
+    query["pitchScale"] = -0.02
+    query["intonationScale"] = 0.42
     query["volumeScale"] = 0.92
-    query["prePhonemeLength"] = 0.32
-    query["postPhonemeLength"] = 0.48
+    query["prePhonemeLength"] = 0.30
+    query["postPhonemeLength"] = 0.44
     query["outputSamplingRate"] = 24000
     query["outputStereo"] = False
     return query
@@ -164,8 +205,16 @@ def main() -> int:
         print(f"{args.date}: audio already exists")
         return 0
 
+    source_text = str(broadcast.get("speech_text", broadcast["text"]))
+    speech_text, applied_pronunciations = apply_pronunciations(
+        source_text,
+        load_pronunciations(broadcast),
+    )
+    if applied_pronunciations:
+        print(f"{args.date}: pronunciation overrides: {', '.join(applied_pronunciations)}")
+
     style_id, voice_label = choose_nemo_voice(args.engine_url, args.voice_number)
-    query = create_query(args.engine_url, str(broadcast["text"]), style_id)
+    query = create_query(args.engine_url, speech_text, style_id)
     query_bytes = json.dumps(query, ensure_ascii=False).encode("utf-8")
     wav = request_bytes(
         f"{args.engine_url}/synthesis?speaker={style_id}",
@@ -183,7 +232,10 @@ def main() -> int:
         "number": args.voice_number,
         "style_id": style_id,
         "label": voice_label,
-        "processing": "fm-narrowband-v1",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": applied_pronunciations,
     }
     data["updated_at"] = datetime.now(JST).isoformat(timespec="seconds")
     save_json(BROADCASTS_PATH, data)
