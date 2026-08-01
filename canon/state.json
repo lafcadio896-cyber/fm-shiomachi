@@ -1,0 +1,32 @@
+{
+  "station": {
+    "name": "FMしおまち 76.4",
+    "tagline": "潮を待つ時間に。",
+    "coverage": ["湾岸北部", "周辺地域の一部"]
+  },
+  "places": [
+    {
+      "name": "潮待市",
+      "type": "municipality",
+      "first_seen": "2026-08-01",
+      "mentions": 1,
+      "status": "unconfirmed"
+    }
+  ],
+  "organizations": [],
+  "people": [],
+  "programs": [
+    {
+      "name": "朝のしおまち情報",
+      "first_seen": "2026-08-01"
+    }
+  ],
+  "unresolved": [
+    {
+      "key": "shiomachi-city-existence",
+      "first_seen": "2026-08-01",
+      "summary": "放送地域資料に記載のない自治体名が気象原稿に含まれた。",
+      "publicly_acknowledged": false
+    }
+  ]
+}
