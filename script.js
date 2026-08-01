@@ -10,10 +10,36 @@ function formatDate(dateString) {
   }).format(date);
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function renderAudio(item, className) {
+  if (!item.audio) {
+    return `<p class="audio-pending">音声記録は準備中です。</p>`;
+  }
+
+  return `
+    <div class="${className}">
+      <p class="audio-label">RECORDED AUDIO / MONAURAL</p>
+      <audio controls preload="none">
+        <source src="${escapeHtml(item.audio)}" type="audio/mpeg">
+        このブラウザでは音声を再生できません。
+      </audio>
+    </div>
+  `;
+}
+
 function renderLatest(item) {
   document.querySelector("#latest-date").textContent = formatDate(item.date);
   document.querySelector("#latest-broadcast").innerHTML = `
-    <p class="broadcast-meta">${item.time} / ${item.program} / ${item.type}</p>
+    <p class="broadcast-meta">${escapeHtml(item.time)} / ${escapeHtml(item.program)} / ${escapeHtml(item.type)}</p>
+    ${renderAudio(item, "latest-player")}
     <div class="broadcast-text">${escapeHtml(item.text)}</div>
   `;
 }
@@ -22,20 +48,12 @@ function renderArchive(items) {
   const archive = document.querySelector("#archive-list");
   archive.innerHTML = items.map((item) => `
     <article class="archive-item">
-      <time datetime="${item.date}">${formatDate(item.date)}</time>
+      <time datetime="${escapeHtml(item.date)}">${formatDate(item.date)}</time>
       <h3>${escapeHtml(item.title)}</h3>
       <span class="type">${escapeHtml(item.type)}</span>
+      ${item.audio ? renderAudio(item, "archive-player") : ""}
     </article>
   `).join("");
-}
-
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
 }
 
 async function main() {
