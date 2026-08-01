@@ -116,6 +116,7 @@ main { padding: 42px 0 76px; }
 .frequency-panel small { grid-column: 1 / -1; margin-top: 20px; color: #c8ccc7; }
 
 .latest,
+.first-record,
 .archive { margin-top: 62px; }
 
 .section-heading {
