@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1eee5">
+  <title>FMしおまち 76.4</title>
+  <meta name="description" content="湾岸北部の生活情報を届けるコミュニティFM、FMしおまち 76.4。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="station-header">
+    <div class="signal" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div>
+      <p class="eyebrow">COMMUNITY RADIO / 76.4 MHz</p>
+      <h1>FMしおまち</h1>
+      <p class="tagline">潮を待つ時間に。</p>
+    </div>
+    <div class="on-air"><i></i> ON AIR</div>
+  </header>
+
+  <main>
+    <section class="frequency-panel" aria-label="受信案内">
+      <p>湾岸北部地域</p>
+      <strong>76.4</strong>
+      <span>MHz</span>
+      <small>受信状態は地域・時間帯により異なります。</small>
+    </section>
+
+    <section class="latest">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">LATEST BROADCAST</p>
+          <h2>最新の放送</h2>
+        </div>
+        <time id="latest-date">読み込み中</time>
+      </div>
+      <article id="latest-broadcast" class="broadcast-card" aria-live="polite">
+        <p>放送記録を読み込んでいます。</p>
+      </article>
+    </section>
+
+    <section class="notice-grid">
+      <article>
+        <p class="eyebrow">INFORMATION</p>
+        <h2>地域のお知らせ</h2>
+        <p>気象・交通・催事など、地域の生活情報を短い放送でお伝えします。</p>
+      </article>
+      <article>
+        <p class="eyebrow">CORRECTIONS</p>
+        <h2>訂正とお詫び</h2>
+        <p id="correction-summary">現在、掲載中の訂正情報はありません。</p>
+      </article>
+      <article>
+        <p class="eyebrow">RECEPTION AREA</p>
+        <h2>放送地域</h2>
+        <p>湾岸北部、および周辺地域の一部。</p>
+      </article>
+    </section>
+
+    <section class="archive">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ARCHIVE</p>
+          <h2>放送記録</h2>
+        </div>
+      </div>
+      <div id="archive-list" class="archive-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>FMしおまち 76.4</p>
+    <p>放送内容は収録時点の情報です。</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
