@@ -46,14 +46,22 @@ function renderLatest(item) {
 
 function renderArchive(items) {
   const archive = document.querySelector("#archive-list");
-  archive.innerHTML = items.map((item) => `
-    <article class="archive-item">
-      <time datetime="${escapeHtml(item.date)}">${formatDate(item.date)}</time>
-      <h3>${escapeHtml(item.title)}</h3>
-      <span class="type">${escapeHtml(item.type)}</span>
-      ${item.audio ? renderAudio(item, "archive-player") : ""}
-    </article>
-  `).join("");
+  archive.innerHTML = items.map((item) => {
+    const isFirstBroadcast = item.date === "2026-08-01";
+    return `
+      <article class="archive-item${isFirstBroadcast ? " first-broadcast" : ""}">
+        <time datetime="${escapeHtml(item.date)}">${formatDate(item.date)}</time>
+        <h3>${escapeHtml(item.title)}</h3>
+        <span class="type">${escapeHtml(item.type)}</span>
+        ${item.audio ? renderAudio(item, "archive-player") : ""}
+        <details class="archive-transcript"${isFirstBroadcast ? " open" : ""}>
+          <summary>${isFirstBroadcast ? "初回放送原稿" : "放送原稿を表示"}</summary>
+          <p class="archive-meta">${escapeHtml(item.time)} / ${escapeHtml(item.program)}</p>
+          <div class="broadcast-text">${escapeHtml(item.text)}</div>
+        </details>
+      </article>
+    `;
+  }).join("");
 }
 
 async function main() {
