@@ -4,13 +4,15 @@ on:
   push:
     paths:
       - ".github/workflows/daily-broadcast.yml"
+      - "scripts/generate_audio.py"
+      - "data/pronunciations.json"
   schedule:
     # 07:05 JST (22:05 UTC on the previous day)
     - cron: "5 22 * * *"
   workflow_dispatch:
     inputs:
       date:
-        description: "音声を生成する日付（YYYY-MM-DD、未指定なら未生成分をすべて補完）"
+        description: "音声を再生成する日付（YYYY-MM-DD、未指定なら未生成分を補完）"
         required: false
         type: string
 
@@ -43,9 +45,28 @@ jobs:
         shell: bash
         env:
           REQUESTED_DATE: ${{ inputs.date }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
+          force=false
+
           if [ -n "$REQUESTED_DATE" ]; then
             dates="$REQUESTED_DATE"
+            force=true
+          elif [ "$EVENT_NAME" = "push" ]; then
+            dates="$(python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path.cwd()
+          data = json.loads((root / "data" / "broadcasts.json").read_text(encoding="utf-8"))
+          print(" ".join(
+              item["date"]
+              for item in data.get("broadcasts", [])
+              if item.get("date")
+          ))
+          PY
+            )"
+            force=true
           else
             dates="$(python - <<'PY'
           import json
@@ -67,8 +88,9 @@ jobs:
           fi
 
           echo "dates=$dates" >> "$GITHUB_OUTPUT"
+          echo "force=$force" >> "$GITHUB_OUTPUT"
           if [ -n "$dates" ]; then
-            echo "Audio target dates: $dates"
+            echo "Audio target dates: $dates (force=$force)"
           else
             echo "No audio generation is required."
           fi
@@ -127,10 +149,16 @@ jobs:
         if: steps.targets.outputs.dates != ''
         shell: bash
         run: |
+          extra_args=()
+          if [ "${{ steps.targets.outputs.force }}" = "true" ]; then
+            extra_args+=(--force)
+          fi
+
           for target_date in ${{ steps.targets.outputs.dates }}; do
             python scripts/generate_audio.py \
               --date "$target_date" \
-              --voice-number 6
+              --voice-number 6 \
+              "${extra_args[@]}"
           done
 
       - name: Stop VOICEVOX Nemo Engine
