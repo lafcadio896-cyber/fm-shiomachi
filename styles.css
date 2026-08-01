@@ -226,6 +226,11 @@ audio {
 .archive-item .type { color: var(--muted); font: .76rem/1.8 ui-monospace, monospace; }
 .archive-item h3 { margin: 0; font-size: 1rem; font-weight: 500; }
 
+.archive-item.first-broadcast {
+  border-left: 3px solid var(--accent);
+  padding-left: 18px;
+}
+
 .archive-player {
   grid-column: 2 / -1;
   margin: 2px 0 4px;
@@ -233,6 +238,36 @@ audio {
 
 .archive-player .audio-label { display: none; }
 .archive-player audio { width: min(100%, 500px); height: 34px; }
+
+.archive-transcript {
+  grid-column: 2 / -1;
+  margin-top: 4px;
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+}
+
+.archive-transcript summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--accent);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+
+.archive-transcript[open] summary { margin-bottom: 16px; }
+
+.archive-transcript .broadcast-text {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.22);
+}
+
+.archive-meta {
+  margin: 0 0 9px;
+  color: var(--muted);
+  font: .74rem/1.5 ui-monospace, monospace;
+}
 
 footer {
   display: flex;
@@ -255,7 +290,9 @@ footer p { margin: 0; }
   .frequency-panel p { grid-column: 1 / -1; }
   .notice-grid { grid-template-columns: 1fr; }
   .archive-item { grid-template-columns: 1fr; gap: 3px; }
-  .archive-player { grid-column: 1; margin-top: 10px; }
+  .archive-item.first-broadcast { padding-left: 12px; }
+  .archive-player,
+  .archive-transcript { grid-column: 1; margin-top: 10px; }
   footer { display: block; }
   footer p + p { margin-top: 5px; }
 }
