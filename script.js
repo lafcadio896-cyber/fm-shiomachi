@@ -27,8 +27,8 @@ function renderAudio(item, className) {
   return `
     <div class="${className}">
       <p class="audio-label">RECORDED AUDIO / MONAURAL</p>
-      <audio controls preload="none">
-        <source src="${escapeHtml(item.audio)}" type="audio/mpeg">
+      <audio controls preload="metadata">
+        <source src="${escapeHtml(item.audio)}?v=20260802-1" type="audio/mpeg">
         このブラウザでは音声を再生できません。
       </audio>
     </div>
