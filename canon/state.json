@@ -30,7 +30,15 @@
       "status": "unconfirmed"
     }
   ],
-  "organizations": [],
+  "organizations": [
+    {
+      "name": "潮待市",
+      "type": "municipality",
+      "first_seen": "2026-08-03",
+      "mentions": 1,
+      "status": "unconfirmed"
+    }
+  ],
   "people": [],
   "programs": [
     {
