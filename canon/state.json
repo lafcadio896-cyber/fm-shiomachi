@@ -35,6 +35,20 @@
       "first_seen": "2026-08-04",
       "mentions": 1,
       "status": "unconfirmed"
+    },
+    {
+      "name": "旧潮待線",
+      "type": "railway",
+      "first_seen": "2026-08-05",
+      "mentions": 1,
+      "status": "unconfirmed"
+    },
+    {
+      "name": "潮待南駅",
+      "type": "station",
+      "first_seen": "2026-08-05",
+      "mentions": 1,
+      "status": "unconfirmed"
     }
   ],
   "organizations": [

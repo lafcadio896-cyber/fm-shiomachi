@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-04T16:50:14+09:00",
+  "updated_at": "2026-08-05T17:00:20+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -87,6 +87,27 @@
         "processing": "fm-narrowband-v2",
         "pronunciation_overrides": [
           "潮待市"
+        ]
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "time": "08:11",
+      "program": "朝のしおまち情報",
+      "type": "交通情報",
+      "title": "旧潮待線代替バスの運行",
+      "text": "午前8時11分、交通情報です。\n\n旧潮待線の南駅から市役所前まで、代替バスが20分間隔で運行しています。\n線路跡付近では霧が出ているため、徒歩での通行は控えてください。\n最終便は午後8時40分です。\n\n以上、交通情報でした。",
+      "audio": "audio/2026-08-05.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待"
         ]
       }
     }
