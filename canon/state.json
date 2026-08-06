@@ -60,7 +60,15 @@
       "status": "unconfirmed"
     }
   ],
-  "people": [],
+  "people": [
+    {
+      "name": "岸壁の窓",
+      "type": "listener",
+      "first_seen": "2026-08-06",
+      "mentions": 1,
+      "status": "unconfirmed"
+    }
+  ],
   "programs": [
     {
       "name": "朝のしおまち情報",

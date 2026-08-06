@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-05T17:00:20+09:00",
+  "updated_at": "2026-08-06T16:59:00+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -109,6 +109,25 @@
         "pronunciation_overrides": [
           "潮待"
         ]
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "time": "22:31",
+      "program": "海抜ゼロからこんばんは",
+      "type": "お便り",
+      "title": "ラジオネーム『岸壁の窓』さん",
+      "text": "ここで、番組に届いたお便りをご紹介します。\n\n『毎晩、仕事から帰る途中に聞いています。昨日は市役所前で雨宿りをしましたが、放送で聞いていたより建物が一階多く、少し驚きました。これからも地域の情報をお願いします』\n\n岸壁の窓さん、お便りありがとうございました。",
+      "audio": "audio/2026-08-06.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": []
       }
     }
   ],
