@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-06T16:59:00+09:00",
+  "updated_at": "2026-08-07T14:02:19+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -128,6 +128,28 @@
         "intonation_scale": 0.42,
         "processing": "fm-narrowband-v2",
         "pronunciation_overrides": []
+      }
+    },
+    {
+      "date": "2026-08-07",
+      "time": "06:55",
+      "program": "朝のしおまち情報",
+      "type": "局からのお知らせ",
+      "title": "開局記念週間について",
+      "text": "FMしおまちからのお知らせです。\n\n当局は、潮待市からの放送要請を受けて開局し、本日で18年を迎えました。\n今週は開局記念週間として、過去の地域放送を一部再放送します。\nなお、開局以前の放送記録についても通常どおり受け付けています。\n\nこれからもFMしおまちをよろしくお願いいたします。",
+      "audio": "audio/2026-08-07.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "FMしおまち",
+          "潮待市"
+        ]
       }
     }
   ],
