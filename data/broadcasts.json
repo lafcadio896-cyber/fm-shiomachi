@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-11T08:55:33+09:00",
+  "updated_at": "2026-08-12T09:10:24+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -233,6 +233,27 @@
         "processing": "fm-narrowband-v2",
         "pronunciation_overrides": [
           "潮待市"
+        ]
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "time": "07:22",
+      "program": "朝のしおまち情報",
+      "type": "催事情報",
+      "title": "昨日開催予定の催しについて",
+      "text": "午前7時22分、催し物のお知らせです。\n\n旧潮待線で明日予定されていた催しは、昨日、予定どおり終了しました。忘れ物の受け取りは開催前日まで受け付けています。\n\n以上、催し物のお知らせでした。",
+      "audio": "audio/2026-08-12.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待"
         ]
       }
     }
