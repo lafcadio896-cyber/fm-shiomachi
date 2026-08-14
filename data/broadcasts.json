@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-14T09:10:45+09:00",
+  "updated_at": "2026-08-15T07:56:27+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -296,6 +296,27 @@
         "processing": "fm-narrowband-v2",
         "pronunciation_overrides": [
           "潮待市"
+        ]
+      }
+    },
+    {
+      "date": "2026-08-15",
+      "time": "12:06",
+      "program": "お昼のしおまち便り",
+      "type": "催事情報",
+      "title": "地域展示のお知らせ",
+      "text": "午後0時6分、催し物のお知らせです。\n\n旧潮待線では、地域の古い写真と生活用品を紹介する小規模展示が行われています。入場は無料です。\n\n以上、催し物のお知らせでした。",
+      "audio": "audio/2026-08-15.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待"
         ]
       }
     }
