@@ -40,7 +40,7 @@
       "name": "旧潮待線",
       "type": "railway",
       "first_seen": "2026-08-05",
-      "mentions": 4,
+      "mentions": 5,
       "status": "established"
     },
     {
@@ -49,6 +49,13 @@
       "first_seen": "2026-08-05",
       "mentions": 3,
       "status": "established"
+    },
+    {
+      "name": "旧潮待線地下分室",
+      "type": "derived-place",
+      "first_seen": "2026-08-20",
+      "mentions": 1,
+      "status": "unconfirmed"
     }
   ],
   "organizations": [
