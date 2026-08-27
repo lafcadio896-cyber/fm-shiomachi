@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-26T07:37:10+09:00",
+  "updated_at": "2026-08-27T12:04:23+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -538,6 +538,27 @@
       "title": "夕方から夜の天気",
       "text": "午後5時15分、気象情報です。\n\n旧潮待線地下分室では、夜遅くにかけて雲が広がる見込みです。海沿いでは風が強まるため、戸締まりをご確認ください。\n\n以上、気象情報でした。",
       "audio": "audio/2026-08-26.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待"
+        ]
+      }
+    },
+    {
+      "date": "2026-08-27",
+      "time": "12:11",
+      "program": "お昼のしおまち便り",
+      "type": "催事情報",
+      "title": "地域展示のお知らせ",
+      "text": "午後0時11分、催し物のお知らせです。\n\n旧潮待線地下分室では、地域の古い写真と生活用品を紹介する小規模展示が行われています。入場は無料です。\n\n以上、催し物のお知らせでした。",
+      "audio": "audio/2026-08-27.mp3",
       "voice": {
         "engine": "VOICEVOX Nemo",
         "number": 6,
