@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-27T12:04:23+09:00",
+  "updated_at": "2026-08-28T15:05:54+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -569,6 +569,27 @@
         "processing": "fm-narrowband-v2",
         "pronunciation_overrides": [
           "潮待"
+        ]
+      }
+    },
+    {
+      "date": "2026-08-28",
+      "time": "17:57",
+      "program": "夕方しおまち通信",
+      "type": "市政情報",
+      "title": "本日の人口速報",
+      "text": "午後5時57分、人口速報です。\n\n本日午後5時現在の潮待市の人口は、前日より0.4人増えて42046.4人です。端数は夜間人口として集計されています。\n\n以上、人口速報でした。",
+      "audio": "audio/2026-08-28.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待市"
         ]
       }
     }
