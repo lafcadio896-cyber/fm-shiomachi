@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-28T15:05:54+09:00",
+  "updated_at": "2026-08-29T12:39:13+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -590,6 +590,27 @@
         "processing": "fm-narrowband-v2",
         "pronunciation_overrides": [
           "潮待市"
+        ]
+      }
+    },
+    {
+      "date": "2026-08-29",
+      "time": "17:02",
+      "program": "夕方しおまち通信",
+      "type": "気象情報",
+      "title": "夕方から夜の天気",
+      "text": "午後5時2分、気象情報です。\n\n旧潮待線では、夜遅くにかけて雲が広がる見込みです。海沿いでは風が強まるため、戸締まりをご確認ください。\n\n以上、気象情報でした。",
+      "audio": "audio/2026-08-29.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待"
         ]
       }
     }
