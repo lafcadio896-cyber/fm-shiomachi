@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-08-31T09:25:05+09:00",
+  "updated_at": "2026-09-01T10:16:47+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -653,6 +653,27 @@
         "processing": "fm-narrowband-v2",
         "pronunciation_overrides": [
           "北通り"
+        ]
+      }
+    },
+    {
+      "date": "2026-09-01",
+      "time": "12:01",
+      "program": "お昼のしおまち便り",
+      "type": "施設情報",
+      "title": "潮待南駅地下分室の利用案内",
+      "text": "午後0時1分、施設利用のお知らせです。\n\n潮待南駅地下分室は、本日午後1時から通常どおり利用できます。入口が見つからない場合は、閉館後にもう一度お越しください。\n\n以上、施設利用のお知らせでした。",
+      "audio": "audio/2026-09-01.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待"
         ]
       }
     }

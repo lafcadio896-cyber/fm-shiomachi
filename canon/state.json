@@ -47,7 +47,7 @@
       "name": "潮待南駅",
       "type": "station",
       "first_seen": "2026-08-05",
-      "mentions": 5,
+      "mentions": 6,
       "status": "established"
     },
     {
@@ -56,6 +56,13 @@
       "first_seen": "2026-08-20",
       "mentions": 5,
       "status": "established"
+    },
+    {
+      "name": "潮待南駅地下分室",
+      "type": "derived-place",
+      "first_seen": "2026-09-01",
+      "mentions": 1,
+      "status": "unconfirmed"
     }
   ],
   "organizations": [
