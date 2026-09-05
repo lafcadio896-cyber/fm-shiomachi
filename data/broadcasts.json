@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-09-05T08:57:11+09:00",
+  "updated_at": "2026-09-06T08:47:12+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -748,6 +748,27 @@
       "title": "昨日開催予定の催しについて",
       "text": "午前7時49分、催し物のお知らせです。\n\n旧潮待線で明日予定されていた催しは、昨日、予定どおり終了しました。忘れ物の受け取りは開催前日まで受け付けています。\n\n以上、催し物のお知らせでした。",
       "audio": "audio/2026-09-05.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待"
+        ]
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "time": "17:47",
+      "program": "夕方しおまち通信",
+      "type": "気象情報",
+      "title": "夕方から夜の天気",
+      "text": "午後5時47分、気象情報です。\n\n潮待南駅地下分室では、夜遅くにかけて雲が広がる見込みです。海沿いでは風が強まるため、戸締まりをご確認ください。\n\n以上、気象情報でした。",
+      "audio": "audio/2026-09-06.mp3",
       "voice": {
         "engine": "VOICEVOX Nemo",
         "number": 6,
