@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-09-07T08:45:43+09:00",
+  "updated_at": "2026-09-08T09:11:24+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -790,6 +790,27 @@
       "title": "資源回収日のお知らせ",
       "text": "午前7時21分、地域のお知らせです。\n\n潮待市役所周辺では、本日、紙類とびん類の回収が行われます。指定の集積場所へ午前8時30分までにお出しください。\n\n以上、地域のお知らせでした。",
       "audio": "audio/2026-09-07.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待市役所"
+        ]
+      }
+    },
+    {
+      "date": "2026-09-08",
+      "time": "07:12",
+      "program": "朝のしおまち情報",
+      "type": "生活情報",
+      "title": "資源回収日のお知らせ",
+      "text": "午前7時12分、地域のお知らせです。\n\n潮待市役所周辺では、本日、紙類とびん類の回収が行われます。指定の集積場所へ午前8時30分までにお出しください。\n\n以上、地域のお知らせでした。",
+      "audio": "audio/2026-09-08.mp3",
       "voice": {
         "engine": "VOICEVOX Nemo",
         "number": 6,
