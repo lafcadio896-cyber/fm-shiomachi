@@ -61,8 +61,15 @@
       "name": "潮待南駅地下分室",
       "type": "derived-place",
       "first_seen": "2026-09-01",
-      "mentions": 3,
+      "mentions": 4,
       "status": "established"
+    },
+    {
+      "name": "潮待南駅地下分室夜間窓口",
+      "type": "derived-place",
+      "first_seen": "2026-09-17",
+      "mentions": 1,
+      "status": "unconfirmed"
     }
   ],
   "organizations": [
