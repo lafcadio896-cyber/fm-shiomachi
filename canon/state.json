@@ -26,7 +26,7 @@
       "name": "北通り",
       "type": "road",
       "first_seen": "2026-08-02",
-      "mentions": 9,
+      "mentions": 10,
       "status": "established"
     },
     {
@@ -70,6 +70,13 @@
       "first_seen": "2026-09-17",
       "mentions": 2,
       "status": "established"
+    },
+    {
+      "name": "北通り海側出入口",
+      "type": "derived-place",
+      "first_seen": "2026-09-25",
+      "mentions": 1,
+      "status": "unconfirmed"
     }
   ],
   "organizations": [
