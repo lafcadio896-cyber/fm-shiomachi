@@ -1,6 +1,6 @@
 {
   "station": "FMしおまち 76.4",
-  "updated_at": "2026-10-06T11:11:33+09:00",
+  "updated_at": "2026-10-07T10:31:50+09:00",
   "broadcasts": [
     {
       "date": "2026-08-01",
@@ -1409,6 +1409,27 @@
         "processing": "fm-narrowband-v2",
         "pronunciation_overrides": [
           "潮待市"
+        ]
+      }
+    },
+    {
+      "date": "2026-10-07",
+      "time": "12:25",
+      "program": "お昼のしおまち便り",
+      "type": "施設情報",
+      "title": "旧潮待線地下分室海側出入口の利用案内",
+      "text": "午後0時25分、施設利用のお知らせです。\n\n旧潮待線地下分室海側出入口は、本日午後1時から通常どおり利用できます。入口が見つからない場合は、閉館後にもう一度お越しください。\n\n以上、施設利用のお知らせでした。",
+      "audio": "audio/2026-10-07.mp3",
+      "voice": {
+        "engine": "VOICEVOX Nemo",
+        "number": 6,
+        "style_id": 10006,
+        "label": "女声6 / ノーマル",
+        "speed_scale": 0.95,
+        "intonation_scale": 0.42,
+        "processing": "fm-narrowband-v2",
+        "pronunciation_overrides": [
+          "潮待"
         ]
       }
     }
