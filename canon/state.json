@@ -12,7 +12,7 @@
       "name": "潮待市",
       "type": "municipality",
       "first_seen": "2026-08-01",
-      "mentions": 8,
+      "mentions": 9,
       "status": "established"
     },
     {
@@ -84,6 +84,13 @@
       "first_seen": "2026-10-07",
       "mentions": 4,
       "status": "established"
+    },
+    {
+      "name": "潮待市海側出入口",
+      "type": "derived-place",
+      "first_seen": "2026-11-08",
+      "mentions": 1,
+      "status": "unconfirmed"
     }
   ],
   "organizations": [
