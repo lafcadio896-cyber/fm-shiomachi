@@ -75,7 +75,7 @@
       "name": "北通り海側出入口",
       "type": "derived-place",
       "first_seen": "2026-09-25",
-      "mentions": 10,
+      "mentions": 11,
       "status": "established"
     },
     {
@@ -91,6 +91,13 @@
       "first_seen": "2026-11-08",
       "mentions": 2,
       "status": "established"
+    },
+    {
+      "name": "北通り海側出入口海側出入口",
+      "type": "derived-place",
+      "first_seen": "2026-11-20",
+      "mentions": 1,
+      "status": "unconfirmed"
     }
   ],
   "organizations": [
