@@ -19,7 +19,7 @@
       "name": "潮待市役所",
       "type": "public-office",
       "first_seen": "2026-08-02",
-      "mentions": 9,
+      "mentions": 10,
       "status": "established"
     },
     {
@@ -98,6 +98,13 @@
       "first_seen": "2026-11-20",
       "mentions": 2,
       "status": "established"
+    },
+    {
+      "name": "潮待市役所夜間窓口",
+      "type": "derived-place",
+      "first_seen": "2026-11-28",
+      "mentions": 1,
+      "status": "unconfirmed"
     }
   ],
   "organizations": [
